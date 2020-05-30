@@ -106,9 +106,9 @@
 <pre class="instructions">ls -C .git</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ ls -C .git
-COMMIT_EDITMSG	ORIG_HEAD	hooks		logs		rr-cache
-HEAD		config		index		objects
-MERGE_RR	description	info		refs
+COMMIT_EDITMSG	config		index		objects
+HEAD		description	info		refs
+ORIG_HEAD	hooks		logs
 </pre>
 <p>This is the magic directory where all the git &#8220;stuff&#8221; is stored. Let&#8217;s peek in the objects directory.</p>
 <h2>The Object Store</h2>
@@ -116,17 +116,17 @@ MERGE_RR	description	info		refs
 <pre class="instructions">ls -C .git/objects</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ ls -C .git/objects
-06	18	28	44	69	8c	9c	c4	e4	info
-09	24	42	4d	6b	97	af	d5	e7	pack
-11	27	43	59	78	9a	b5	dc	ed
+09	24	33	43	6b	96	9c	b5	e4	pack
+11	27	35	59	78	97	a3	c4	e7
+12	28	3c	69	8b	98	af	df	info
 </pre>
 <p>You should see a bunch of directories with 2 letter names.  The directory names are the first two letters of the sha1 hash of the object stored in git.</p>
 <h2>Deeper into the Object Store</h2>
 <h3><b>Execute:</b></h3>
 <pre class="instructions">ls -C .git/objects/&lt;dir&gt;</pre>
 <h3><b>Output:</b></h3>
-<pre class="sample">$ ls -C .git/objects/06
-3b40ead4efa2dce10ca893772c83483f0b546b
+<pre class="sample">$ ls -C .git/objects/09
+6b74c56bfc6b40e754fc0725b8c70b2038b91e	9fb6f9d3a104feb32fcac22354c4d0e8a182c1
 </pre>
 <p>Look in one of the two-letter directories.  You should see some files with 38-character names.  These are the files that contain the objects stored in git.  These files are compressed and encoded, so looking at their contents directly won&#8217;t be very helpful, but we will take a closer look in a bit.</p>
 <h2>Config File</h2>
@@ -162,7 +162,7 @@ $ ls .git/refs/tags
 v1
 v1-beta
 $ cat .git/refs/tags/v1
-4d578d47c426d4d94fcb3c645fe29c27138f3900
+9811d9e446d4790217484450b0dd756915174341
 </pre>
 <p>You should recognize the files in the tags subdirectory.  Each file corresponds to a tag you created with the <code>git tag</code> command earlier. Its content is just the hash of the commit tied to the tag.</p>
 <p>The heads directory is similar, but is used for branches rather than tags.  We only have one branch at the moment, so all you will see is master in this directory.</p>

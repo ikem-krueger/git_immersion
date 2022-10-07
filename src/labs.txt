@@ -2620,9 +2620,6 @@ h1. Advanced / Future Topics
 
 p. Here are some topics you might want to research on your own:
 
-* Reverting Committed Changes
-* Cross OS Line Endings
-* Remote Servers
 * Protocols
 * SSH Setup
 * Remote Branch Management

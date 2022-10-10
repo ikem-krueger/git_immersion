@@ -212,7 +212,7 @@ _permanently_ recorded in the repository yet.  The next commit
 operation will include the staged changes.
 
 p. If you decide you _don't_ want to commit that change after all, the
-status command reminds you that the @git reset@ command can be used to
+status command reminds you that the @git restore@ command can be used to
 unstage that change.
 
 ----------------------------------------------------------------------
@@ -894,8 +894,8 @@ ready to be committed.
 
 h2. Reset the Staging Area
 
-p. Fortunately the status output tells us exactly what we need to do
-to unstage the change.
+p. The @reset@ command resets the staging area to be whatever is in
+HEAD.  This clears the staging area of the change we just staged.
 
 Execute:
 git reset HEAD hello.rb
@@ -905,13 +905,13 @@ Output:
 =reset
 EOF
 
-p. The @reset@ command resets the staging area to be whatever is in
-HEAD.  This clears the staging area of the change we just staged.
-
 p. The @reset@ command (by default) doesn't change the working
 directory.  So the working directory still has the unwanted comment in
 it.  We can use  the @checkout@ command of the previous lab to remove
 the unwanted change from the working directory.
+
+p(note). *Note*: You could also have used the @git restore@ command to restore
+just the single file.
 
 h2. Checkout the Committed Version
 

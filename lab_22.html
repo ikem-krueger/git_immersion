@@ -116,9 +116,9 @@ ORIG_HEAD	hooks		logs
 <pre class="instructions">ls -C .git/objects</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ ls -C .git/objects
-05	24	28	45	6b	97	b5	db	e7
-09	25	2a	59	6c	9c	c4	e1	info
-11	27	43	69	78	af	cd	e4	pack
+05	24	43	59	78	97	b2	d1	f1	pack
+09	27	4b	69	7d	9c	b5	e4	fc
+11	28	4c	6b	89	af	c4	e7	info
 </pre>
 <p>You should see a bunch of directories with 2 letter names.  The directory names are the first two letters of the sha1 hash of the object stored in git.</p>
 <h2>Deeper into the Object Store</h2>
@@ -126,7 +126,7 @@ ORIG_HEAD	hooks		logs
 <pre class="instructions">ls -C .git/objects/&lt;dir&gt;</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ ls -C .git/objects/05
-87bd23271fa520b5ceefb34b9b01e225fc8e4a
+f184035f7dc8e015d30362e7f5e2800965c33f
 </pre>
 <p>Look in one of the two-letter directories.  You should see some files with 38-character names.  These are the files that contain the objects stored in git.  These files are compressed and encoded, so looking at their contents directly won&#8217;t be very helpful, but we will take a closer look in a bit.</p>
 <h2>Config File</h2>
@@ -162,18 +162,18 @@ $ ls .git/refs/tags
 v1
 v1-beta
 $ cat .git/refs/tags/v1
-2afbb9dee3a4fa9c0d6921ec983ceda7efa9f7e6
+b25116afe1b31cda48a5d66a1b4b3667b18dd1af
 </pre>
 <p>You should recognize the files in the tags subdirectory.  Each file corresponds to a tag you created with the <code>git tag</code> command earlier. Its content is just the hash of the commit tied to the tag.</p>
-<p>The heads directory is similar, but is used for branches rather than tags.  We only have one branch at the moment, so all you will see is master in this directory.</p>
+<p>The heads directory is similar, but is used for branches rather than tags.  We only have one branch at the moment, so all you will see is main in this directory.</p>
 <h2>The <span class="caps">HEAD</span> File</h2>
 <h3><b>Execute:</b></h3>
 <pre class="instructions">cat .git/HEAD</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ cat .git/HEAD
-ref: refs/heads/master
+7dff4ab94a885374f783ab701bfa0778e3d643d8
 </pre>
-<p>The <span class="caps">HEAD</span> file contains a reference to the current branch.  It should be a reference to master at this point.</p>
+<p>The <span class="caps">HEAD</span> file contains a reference to the current branch.  It should be a reference to main at this point.</p>
         <nav class="foot-navigation">
       <a href="lab_21.html">
       <svg version="1.1" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M27.66,15.61,18,6,8.34,15.61A1,1,0,1,0,9.75,17L17,9.81V28.94a1,1,0,1,0,2,0V9.81L26.25,17a1,1,0,0,0,1.41-1.42Z"></path></svg>

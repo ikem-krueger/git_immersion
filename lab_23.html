@@ -108,7 +108,7 @@
 <p>This should show the latest commit made in the repository.  The SHA1 hash on your system is probably different from what is on mine, but you should see something like this.</p>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git hist --max-count=1
-* cd43133 2023-06-10 | Added a Rakefile. (HEAD -&gt; master) [Jim Weirich]</pre>
+* 7dff4ab 2023-06-10 | Added a Rakefile. (HEAD) [Jim Weirich]</pre>
 <h2>Dumping the Latest Commit</h2>
 <p>Using the SHA1 hash from the commit listed above &#8230;</p>
 <h3><b>Execute:</b></h3>
@@ -116,18 +116,18 @@
 git cat-file -p &lt;hash&gt;</pre>
 <p>Here&#8217;s my output &#8230;</p>
 <h3><b>Output:</b></h3>
-<pre class="sample">$ git cat-file -t cd43133
+<pre class="sample">$ git cat-file -t 7dff4ab
 commit
-$ git cat-file -p cd43133
+$ git cat-file -p 7dff4ab
 tree 096b74c56bfc6b40e754fc0725b8c70b2038b91e
-parent 25e49fd33746ca268fb4c44ca4cfbaaf36eaa6d7
-author Jim Weirich &lt;jim (at) edgecase.com&gt; 1686371905 -0400
-committer Jim Weirich &lt;jim (at) edgecase.com&gt; 1686371905 -0400
+parent 891864a042772dd9eae054a439b5728d09a70545
+author Jim Weirich &lt;jim (at) edgecase.com&gt; 1686372614 -0400
+committer Jim Weirich &lt;jim (at) edgecase.com&gt; 1686372614 -0400
 
 Added a Rakefile.
 </pre>
 <p class="note"><strong><span class="caps">NOTE</span>:</strong> If you defined the &#8216;type&#8217; and &#8216;dump&#8217; aliases from the aliases lab, then you can type <code>git type</code> and <code>git dump</code> rather than the longer cat-file commands (which I never remember).</p>
-<p>This is the dump of the commit object that is at the head of the master branch.  It looks a lot like the commit object from the presentation earlier.</p>
+<p>This is the dump of the commit object that is at the head of the main branch.  It looks a lot like the commit object from the presentation earlier.</p>
 <h2>Finding the Tree</h2>
 <p>We can dump the directory tree referenced in the commit.  This should be a description of the (top level) files in our project (for that commit).  Use the SHA1 hash from the &#8220;tree&#8221; line listed above.</p>
 <h3><b>Execute:</b></h3>

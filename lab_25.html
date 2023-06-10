@@ -105,30 +105,33 @@
 <pre class="instructions">git hist --all</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git hist --all
-* c32e9da 2023-06-10 | Updated Rakefile (HEAD -&gt; greet) [Jim Weirich]
-* a42890b 2023-06-10 | Hello uses Greeter [Jim Weirich]
-* b42ce9d 2023-06-10 | Added greeter class [Jim Weirich]
-* cd43133 2023-06-10 | Added a Rakefile. (master) [Jim Weirich]
-* 25e49fd 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
-* 4550c5f 2023-06-10 | Add an author/email comment [Jim Weirich]
-* 2afbb9d 2023-06-10 | Added a comment (tag: v1) [Jim Weirich]
-* 2a9362a 2023-06-10 | Added a default value (tag: v1-beta) [Jim Weirich]
-* db22191 2023-06-10 | Using ARGV [Jim Weirich]
-* 2589520 2023-06-10 | First Commit [Jim Weirich]</pre>
-<h2>Switch to the Master Branch</h2>
+* 9e0c234 2023-06-10 | Updated Rakefile (HEAD -&gt; greet) [Jim Weirich]
+* 1c6e7fc 2023-06-10 | Hello uses Greeter [Jim Weirich]
+* c1016ec 2023-06-10 | Added greeter class [Jim Weirich]
+* 7dff4ab 2023-06-10 | Added a Rakefile. [Jim Weirich]
+* 891864a 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
+* 4c3b5c9 2023-06-10 | Add an author/email comment [Jim Weirich]
+| * 05f1840 2023-06-10 | Added a comment (master) [Jim Weirich]
+| * 11d8159 2023-06-10 | Added a default value [Jim Weirich]
+| * fc07d4c 2023-06-10 | Using ARGV [Jim Weirich]
+|/  
+* b25116a 2023-06-10 | First Commit (tag: v1-beta, tag: v1) [Jim Weirich]</pre>
+<h2>Switch to the Main Branch</h2>
 <p>Just use the <code>git checkout</code> command to switch between branches.</p>
 <h3><b>Execute:</b></h3>
-<pre class="instructions">git checkout master
+<pre class="instructions">git checkout main
 cat lib/hello.rb</pre>
 <h3><b>Output:</b></h3>
-<pre class="sample">$ git checkout master
-Switched to branch 'master'
+<pre class="sample">$ git checkout main
+error: pathspec 'main' did not match any file(s) known to git
 $ cat lib/hello.rb
+require 'greeter'
+
 # Default is World
-# Author: Jim Weirich (jim@somewhere.com)
 name = ARGV.first || "World"
 
-puts "Hello, #{name}!"
+greeter = Greeter.new(name)
+puts greeter.greet
 </pre>
 <p>You are now on the master branch.  You can tell because the hello.rb file doesn&#8217;t use the <code>Greeter</code> class.</p>
 <h2>Switch Back to the Greet Branch.</h2>
@@ -137,7 +140,7 @@ puts "Hello, #{name}!"
 cat lib/hello.rb</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git checkout greet
-Switched to branch 'greet'
+Already on 'greet'
 $ cat lib/hello.rb
 require 'greeter'
 

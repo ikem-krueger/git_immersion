@@ -100,10 +100,10 @@
 <ul>
 	<li>Learn how to revert changes in the working directory</li>
 </ul>
-<h2>Checkout Master</h2>
-<p>Make sure you are on the latest commit in master before proceeding.</p>
+<h2>Checkout main</h2>
+<p>Make sure you are on the latest commit in main before proceeding.</p>
 <h3><b>Execute:</b></h3>
-<pre class="instructions">git checkout master</pre>
+<pre class="instructions">git checkout main</pre>
 <h2>Change hello.rb</h2>
 <p>Sometimes you have modified a file in your local working directory and you wish to just revert to what has already been committed.  The checkout command will handle that.</p>
 <p>Change hello.rb to have a bad comment.</p>
@@ -119,7 +119,7 @@ puts "Hello, #{name}!"
 <pre class="instructions">git status</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git status
-On branch master
+HEAD detached at b25116a
 Changes not staged for commit:
   (use "git add &lt;file&gt;..." to update what will be committed)
   (use "git checkout -- &lt;file&gt;..." to discard changes in working directory)
@@ -139,13 +139,10 @@ cat hello.rb</pre>
 <pre class="sample">$ git checkout hello.rb
 Updated 1 path from the index
 $ git status
-On branch master
+HEAD detached at b25116a
 nothing to commit, working tree clean
 $ cat hello.rb
-# Default is "World"
-name = ARGV.first || "World"
-
-puts "Hello, #{name}!"
+puts "Hello, World"
 </pre>
 <p>The status command shows us that there are no outstanding changes in the working directory.  And the &#8220;bad comment&#8221; is no longer part of the file contents.</p>
         <nav class="foot-navigation">

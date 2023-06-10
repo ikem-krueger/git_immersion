@@ -106,18 +106,18 @@
 <pre class="instructions">git hist --all</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git hist --all
-* 8d90176 2020-06-20 | Added README (HEAD -&gt; master) [Jim Weirich]
-| * 228a31e 2020-06-20 | Updated Rakefile (greet) [Jim Weirich]
-| * 98cfd8a 2020-06-20 | Hello uses Greeter [Jim Weirich]
-| * cf0438b 2020-06-20 | Added greeter class [Jim Weirich]
+* c32e9da 2023-06-10 | Updated Rakefile (greet) [Jim Weirich]
+* a42890b 2023-06-10 | Hello uses Greeter [Jim Weirich]
+* b42ce9d 2023-06-10 | Added greeter class [Jim Weirich]
+| * 0a2dd97 2023-06-10 | Added README (HEAD -&gt; master) [Jim Weirich]
 |/  
-* 5aec14d 2020-06-20 | Added a Rakefile. [Jim Weirich]
-* 721b979 2020-06-20 | Moved hello.rb to lib [Jim Weirich]
-* 907a445 2020-06-20 | Add an author/email comment [Jim Weirich]
-* 4254c94 2020-06-20 | Added a comment (tag: v1) [Jim Weirich]
-* c8b3af1 2020-06-20 | Added a default value (tag: v1-beta) [Jim Weirich]
-* 30c2cd4 2020-06-20 | Using ARGV [Jim Weirich]
-* 4445720 2020-06-20 | First Commit [Jim Weirich]</pre>
+* cd43133 2023-06-10 | Added a Rakefile. [Jim Weirich]
+* 25e49fd 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
+* 4550c5f 2023-06-10 | Add an author/email comment [Jim Weirich]
+* 2afbb9d 2023-06-10 | Added a comment (tag: v1) [Jim Weirich]
+* 2a9362a 2023-06-10 | Added a default value (tag: v1-beta) [Jim Weirich]
+* db22191 2023-06-10 | Using ARGV [Jim Weirich]
+* 2589520 2023-06-10 | First Commit [Jim Weirich]</pre>
 <p>Here is our first chance to see the <code>--graph</code> option on <code>git hist</code> in action. Adding the <code>--graph</code> option to <code>git log</code> causes it to draw the commit tree using simple <span class="caps">ASCII</span> characters.  We can see both branches (greet and master), and that the master branch is the current <span class="caps">HEAD</span>. The common ancestor to both branches is the &#8220;Added a Rakefile&#8221; branch.</p>
 <p>The <code>--all</code> flag makes sure that we see all the branches.  The default is to show only the current branch.</p>
         <nav class="foot-navigation">

@@ -61,16 +61,16 @@
   <li id="lab_23_link"><a href="lab_23.html">Git Internals: Working directly with Git Objects</a></li>
   <li id="lab_24_link"><a href="lab_24.html">Creating a Branch</a></li>
   <li id="lab_25_link"><a href="lab_25.html">Navigating Branches</a></li>
-  <li id="lab_26_link"><a href="lab_26.html">Changes in Master</a></li>
+  <li id="lab_26_link"><a href="lab_26.html">Changes in Main</a></li>
   <li id="lab_27_link"><a href="lab_27.html">Viewing Diverging Branches</a></li>
   <li id="lab_28_link"><a href="lab_28.html">Merging</a></li>
   <li id="lab_29_link"><a href="lab_29.html">Creating a Conflict</a></li>
   <li id="lab_30_link"><a href="lab_30.html">Resolving Conflicts</a></li>
   <li id="lab_31_link"><a href="lab_31.html">Rebasing VS Merging</a></li>
   <li id="lab_32_link"><a href="lab_32.html">Resetting the Greet Branch</a></li>
-  <li id="lab_33_link"><a href="lab_33.html">Resetting the Master Branch</a></li>
+  <li id="lab_33_link"><a href="lab_33.html">Resetting the Main Branch</a></li>
   <li id="lab_34_link"><a href="lab_34.html">Rebasing</a></li>
-  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Master</a></li>
+  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Main</a></li>
   <li id="lab_36_link"><a href="lab_36.html">Multiple Repositories</a></li>
   <li id="lab_37_link"><a href="lab_37.html">Cloning Repositories</a></li>
   <li id="lab_38_link"><a href="lab_38.html">Review the Cloned Repository</a></li>
@@ -95,38 +95,47 @@
       </div>
 
       <div id="content" tabindex="-1">
-        <h1 class="lab_title"><em>lab 35</em>  Merging Back to Master</h1>
+        <h1 class="lab_title"><em>lab 35</em>  Merging Back to Main</h1>
 <h2>Goals</h2>
 <ul>
-	<li>We&#8217;ve kept our greet branch up to date with master (via rebase), now let&#8217;s merge the greet changes back into the master branch.</li>
+	<li>We&#8217;ve kept our greet branch up to date with main (via rebase), now let&#8217;s merge the greet changes back into the main branch.</li>
 </ul>
-<h2>Merge greet into master</h2>
+<h2>Merge greet into main</h2>
 <h3><b>Execute:</b></h3>
-<pre class="instructions">git checkout master
+<pre class="instructions">git checkout main
 git merge greet</pre>
 <h3><b>Output:</b></h3>
-<pre class="sample">$ git checkout master
-Switched to branch 'master'
+<pre class="sample">$ git checkout main
+Switched to branch 'main'
 $
 $ git merge greet
-error: Merging is not possible because you have unmerged files.
-hint: Fix them up in the work tree, and then use 'git add/rm &lt;file&gt;'
-hint: as appropriate to mark resolution and make a commit.
-fatal: Exiting because of an unresolved conflict.
+Updating 976950b..5f626c6
+Fast-forward
+ Rakefile       | 2 +-
+ lib/greeter.rb | 8 ++++++++
+ lib/hello.rb   | 6 ++++--
+ 3 files changed, 13 insertions(+), 3 deletions(-)
+ create mode 100644 lib/greeter.rb
 </pre>
-<p>Because the head of master is a direct ancestor of the head of the greet branch, git is able to do a fast-forward merge.  When fast-forwarding, the branch pointer is simply moved forward to point to the same commit as the greeter branch.</p>
+<p>Because the head of main is a direct ancestor of the head of the greet branch, git is able to do a fast-forward merge.  When fast-forwarding, the branch pointer is simply moved forward to point to the same commit as the greeter branch.</p>
 <p>There will never be conflicts in a fast-forward merge.</p>
 <h2>Review the logs</h2>
 <h3><b>Execute:</b></h3>
 <pre class="instructions">git hist</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git hist
-* 72684ba 2023-06-10 | Added README (HEAD, master) [Jim Weirich]
-* 05f1840 2023-06-10 | Added a comment [Jim Weirich]
-* 11d8159 2023-06-10 | Added a default value [Jim Weirich]
-* fc07d4c 2023-06-10 | Using ARGV [Jim Weirich]
-* b25116a 2023-06-10 | First Commit (tag: v1-beta, tag: v1) [Jim Weirich]</pre>
-<p>The greet and master branches are now identical.</p>
+* 5f626c6 2023-06-10 | Updated Rakefile (HEAD -&gt; main, greet) [Jim Weirich]
+* 24d82d4 2023-06-10 | Hello uses Greeter [Jim Weirich]
+* 619f552 2023-06-10 | Added greeter class [Jim Weirich]
+* 976950b 2023-06-10 | Added README [Jim Weirich]
+* cdceefa 2023-06-10 | Added a Rakefile. [Jim Weirich]
+* 22273f2 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
+* 186488e 2023-06-10 | Add an author/email comment [Jim Weirich]
+* e4e3645 2023-06-10 | Added a comment (tag: v1) [Jim Weirich]
+* a6b268e 2023-06-10 | Added a default value (tag: v1-beta) [Jim Weirich]
+* 174dfab 2023-06-10 | Using ARGV [Jim Weirich]
+* f7c41d3 2023-06-10 | First Commit [Jim Weirich]</pre>
+<p>The greet and main branches are now identical.</p>
         <nav class="foot-navigation">
       <a href="lab_34.html">
       <svg version="1.1" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M27.66,15.61,18,6,8.34,15.61A1,1,0,1,0,9.75,17L17,9.81V28.94a1,1,0,1,0,2,0V9.81L26.25,17a1,1,0,0,0,1.41-1.42Z"></path></svg>

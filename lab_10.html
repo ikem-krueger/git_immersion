@@ -61,16 +61,16 @@
   <li id="lab_23_link"><a href="lab_23.html">Git Internals: Working directly with Git Objects</a></li>
   <li id="lab_24_link"><a href="lab_24.html">Creating a Branch</a></li>
   <li id="lab_25_link"><a href="lab_25.html">Navigating Branches</a></li>
-  <li id="lab_26_link"><a href="lab_26.html">Changes in Master</a></li>
+  <li id="lab_26_link"><a href="lab_26.html">Changes in Main</a></li>
   <li id="lab_27_link"><a href="lab_27.html">Viewing Diverging Branches</a></li>
   <li id="lab_28_link"><a href="lab_28.html">Merging</a></li>
   <li id="lab_29_link"><a href="lab_29.html">Creating a Conflict</a></li>
   <li id="lab_30_link"><a href="lab_30.html">Resolving Conflicts</a></li>
   <li id="lab_31_link"><a href="lab_31.html">Rebasing VS Merging</a></li>
   <li id="lab_32_link"><a href="lab_32.html">Resetting the Greet Branch</a></li>
-  <li id="lab_33_link"><a href="lab_33.html">Resetting the Master Branch</a></li>
+  <li id="lab_33_link"><a href="lab_33.html">Resetting the Main Branch</a></li>
   <li id="lab_34_link"><a href="lab_34.html">Rebasing</a></li>
-  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Master</a></li>
+  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Main</a></li>
   <li id="lab_36_link"><a href="lab_36.html">Multiple Repositories</a></li>
   <li id="lab_37_link"><a href="lab_37.html">Cloning Repositories</a></li>
   <li id="lab_38_link"><a href="lab_38.html">Review the Cloned Repository</a></li>
@@ -106,27 +106,27 @@
 <p>You should see &#8230;</p>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git log
-commit 05f184035f7dc8e015d30362e7f5e2800965c33f
+commit e4e3645637546103e72f0deb9abdd22dd256601e
 Author: Jim Weirich &lt;jim (at) edgecase.com&gt;
-Date:   Sat Jun 10 00:50:11 2023 -0400
+Date:   Sat Jun 10 03:49:13 2023 -0400
 
     Added a comment
 
-commit 11d8159a2b245a7a9a75732fb6803ac9b38bdbf2
+commit a6b268ebc6a47068474bd6dfb638eb06896a6057
 Author: Jim Weirich &lt;jim (at) edgecase.com&gt;
-Date:   Sat Jun 10 00:50:11 2023 -0400
+Date:   Sat Jun 10 03:49:13 2023 -0400
 
     Added a default value
 
-commit fc07d4c5f03600e280c68ee9d94569083f6dd191
+commit 174dfabb62e6588c0e3c40867295da073204eb01
 Author: Jim Weirich &lt;jim (at) edgecase.com&gt;
-Date:   Sat Jun 10 00:50:11 2023 -0400
+Date:   Sat Jun 10 03:49:13 2023 -0400
 
     Using ARGV
 
-commit b25116afe1b31cda48a5d66a1b4b3667b18dd1af
+commit f7c41d3ce80ca44e2c586434cbf90fea3a9009a5
 Author: Jim Weirich &lt;jim (at) edgecase.com&gt;
-Date:   Sat Jun 10 00:50:11 2023 -0400
+Date:   Sat Jun 10 03:49:13 2023 -0400
 
     First Commit
 </pre>
@@ -138,10 +138,10 @@ Date:   Sat Jun 10 00:50:11 2023 -0400
 <p>You should see &#8230;</p>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git log --pretty=oneline
-05f184035f7dc8e015d30362e7f5e2800965c33f Added a comment
-11d8159a2b245a7a9a75732fb6803ac9b38bdbf2 Added a default value
-fc07d4c5f03600e280c68ee9d94569083f6dd191 Using ARGV
-b25116afe1b31cda48a5d66a1b4b3667b18dd1af First Commit
+e4e3645637546103e72f0deb9abdd22dd256601e Added a comment
+a6b268ebc6a47068474bd6dfb638eb06896a6057 Added a default value
+174dfabb62e6588c0e3c40867295da073204eb01 Using ARGV
+f7c41d3ce80ca44e2c586434cbf90fea3a9009a5 First Commit
 </pre>
 <h2>Controlling Which Entries are Displayed</h2>
 <p>There are a lot of options for selecting which entries are displayed in the log.  Play around with the following options:</p>
@@ -161,10 +161,10 @@ git log --pretty=oneline --all</pre>
 <p>It looks like this:</p>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
-* 05f1840 2023-06-10 | Added a comment (HEAD -&gt; master) [Jim Weirich]
-* 11d8159 2023-06-10 | Added a default value [Jim Weirich]
-* fc07d4c 2023-06-10 | Using ARGV [Jim Weirich]
-* b25116a 2023-06-10 | First Commit [Jim Weirich]</pre>
+* e4e3645 2023-06-10 | Added a comment (HEAD -&gt; main) [Jim Weirich]
+* a6b268e 2023-06-10 | Added a default value [Jim Weirich]
+* 174dfab 2023-06-10 | Using ARGV [Jim Weirich]
+* f7c41d3 2023-06-10 | First Commit [Jim Weirich]</pre>
 <p>Let&#8217;s look at it in detail:</p>
 <ul>
 	<li><code>--pretty="..."</code> defines the format of the output.</li>

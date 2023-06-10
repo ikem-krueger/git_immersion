@@ -61,16 +61,16 @@
   <li id="lab_23_link"><a href="lab_23.html">Git Internals: Working directly with Git Objects</a></li>
   <li id="lab_24_link"><a href="lab_24.html">Creating a Branch</a></li>
   <li id="lab_25_link"><a href="lab_25.html">Navigating Branches</a></li>
-  <li id="lab_26_link"><a href="lab_26.html">Changes in Master</a></li>
+  <li id="lab_26_link"><a href="lab_26.html">Changes in Main</a></li>
   <li id="lab_27_link"><a href="lab_27.html">Viewing Diverging Branches</a></li>
   <li id="lab_28_link"><a href="lab_28.html">Merging</a></li>
   <li id="lab_29_link"><a href="lab_29.html">Creating a Conflict</a></li>
   <li id="lab_30_link"><a href="lab_30.html">Resolving Conflicts</a></li>
   <li id="lab_31_link"><a href="lab_31.html">Rebasing VS Merging</a></li>
   <li id="lab_32_link"><a href="lab_32.html">Resetting the Greet Branch</a></li>
-  <li id="lab_33_link"><a href="lab_33.html">Resetting the Master Branch</a></li>
+  <li id="lab_33_link"><a href="lab_33.html">Resetting the Main Branch</a></li>
   <li id="lab_34_link"><a href="lab_34.html">Rebasing</a></li>
-  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Master</a></li>
+  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Main</a></li>
   <li id="lab_36_link"><a href="lab_36.html">Multiple Repositories</a></li>
   <li id="lab_37_link"><a href="lab_37.html">Cloning Repositories</a></li>
   <li id="lab_38_link"><a href="lab_38.html">Review the Cloned Repository</a></li>
@@ -121,9 +121,9 @@ git commit -m "Oops, we didn't want this commit"</pre>
 <p>This will pop you into the editor.  You can edit the default commit message or leave it as is.  Save and close the file. You should see &#8230;</p>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git revert HEAD --no-edit
-[detached HEAD f122f4d] Revert "Oops, we didn't want this commit"
- Date: Sat Jun 10 00:50:12 2023 -0400
- 1 file changed, 1 insertion(+), 4 deletions(-)
+[main 8b71812] Revert "Oops, we didn't want this commit"
+ Date: Sat Jun 10 03:49:14 2023 -0400
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 </pre>
 <p>Since we were undoing the very last commit we made, we were able to use <code>HEAD</code> as the argument to revert.  We can revert any arbitrary commit earlier in history by simply specifying its hash value.</p>
 <p class="note"><strong>Note:</strong> The <code>--no-edit</code> in the output can be ignored. It was necessary to generate the output without opening the editor.</p>
@@ -133,9 +133,12 @@ git commit -m "Oops, we didn't want this commit"</pre>
 <pre class="instructions">git hist</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git hist
-* f122f4d 2023-06-10 | Revert "Oops, we didn't want this commit" (HEAD) [Jim Weirich]
-* 4bbcd73 2023-06-10 | Oops, we didn't want this commit [Jim Weirich]
-* b25116a 2023-06-10 | First Commit (tag: v1-beta, tag: v1) [Jim Weirich]</pre>
+* 8b71812 2023-06-10 | Revert "Oops, we didn't want this commit" (HEAD -&gt; main) [Jim Weirich]
+* 146fb71 2023-06-10 | Oops, we didn't want this commit [Jim Weirich]
+* e4e3645 2023-06-10 | Added a comment (tag: v1) [Jim Weirich]
+* a6b268e 2023-06-10 | Added a default value (tag: v1-beta) [Jim Weirich]
+* 174dfab 2023-06-10 | Using ARGV [Jim Weirich]
+* f7c41d3 2023-06-10 | First Commit [Jim Weirich]</pre>
 <p>This technique will work with any commit (although you may have to resolve conflicts).  It is safe to use even on branches that are publicly shared on remote repositories.</p>
 <h2>Up Next</h2>
 <p>Next, let&#8217;s look at a technique that can be used to remove the most recent commits from the repository history.</p>

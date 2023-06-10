@@ -61,16 +61,16 @@
   <li id="lab_23_link"><a href="lab_23.html">Git Internals: Working directly with Git Objects</a></li>
   <li id="lab_24_link"><a href="lab_24.html">Creating a Branch</a></li>
   <li id="lab_25_link"><a href="lab_25.html">Navigating Branches</a></li>
-  <li id="lab_26_link"><a href="lab_26.html">Changes in Master</a></li>
+  <li id="lab_26_link"><a href="lab_26.html">Changes in Main</a></li>
   <li id="lab_27_link"><a href="lab_27.html">Viewing Diverging Branches</a></li>
   <li id="lab_28_link"><a href="lab_28.html">Merging</a></li>
   <li id="lab_29_link"><a href="lab_29.html">Creating a Conflict</a></li>
   <li id="lab_30_link"><a href="lab_30.html">Resolving Conflicts</a></li>
   <li id="lab_31_link"><a href="lab_31.html">Rebasing VS Merging</a></li>
   <li id="lab_32_link"><a href="lab_32.html">Resetting the Greet Branch</a></li>
-  <li id="lab_33_link"><a href="lab_33.html">Resetting the Master Branch</a></li>
+  <li id="lab_33_link"><a href="lab_33.html">Resetting the Main Branch</a></li>
   <li id="lab_34_link"><a href="lab_34.html">Rebasing</a></li>
-  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Master</a></li>
+  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Main</a></li>
   <li id="lab_36_link"><a href="lab_36.html">Multiple Repositories</a></li>
   <li id="lab_37_link"><a href="lab_37.html">Cloning Repositories</a></li>
   <li id="lab_38_link"><a href="lab_38.html">Review the Cloned Repository</a></li>
@@ -107,8 +107,8 @@
 <h3><b>Output:</b></h3>
 <pre class="sample">$ ls -C .git
 COMMIT_EDITMSG	config		index		objects
-HEAD		description	info		refs
-ORIG_HEAD	hooks		logs
+HEAD		description	info		packed-refs
+ORIG_HEAD	hooks		logs		refs
 </pre>
 <p>This is the magic directory where all the git &#8220;stuff&#8221; is stored. Let&#8217;s peek in the objects directory.</p>
 <h2>The Object Store</h2>
@@ -116,17 +116,17 @@ ORIG_HEAD	hooks		logs
 <pre class="instructions">ls -C .git/objects</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ ls -C .git/objects
-05	24	43	59	78	97	b2	d1	f1	pack
-09	27	4b	69	7d	9c	b5	e4	fc
-11	28	4c	6b	89	af	c4	e7	info
+09	17	24	43	6b	97	af	c4	e7	pack
+11	18	27	59	78	9c	b0	cd	f7
+14	22	28	69	8b	a6	b5	e4	info
 </pre>
 <p>You should see a bunch of directories with 2 letter names.  The directory names are the first two letters of the sha1 hash of the object stored in git.</p>
 <h2>Deeper into the Object Store</h2>
 <h3><b>Execute:</b></h3>
 <pre class="instructions">ls -C .git/objects/&lt;dir&gt;</pre>
 <h3><b>Output:</b></h3>
-<pre class="sample">$ ls -C .git/objects/05
-f184035f7dc8e015d30362e7f5e2800965c33f
+<pre class="sample">$ ls -C .git/objects/09
+6b74c56bfc6b40e754fc0725b8c70b2038b91e	9fb6f9d3a104feb32fcac22354c4d0e8a182c1
 </pre>
 <p>Look in one of the two-letter directories.  You should see some files with 38-character names.  These are the files that contain the objects stored in git.  These files are compressed and encoded, so looking at their contents directly won&#8217;t be very helpful, but we will take a closer look in a bit.</p>
 <h2>Config File</h2>
@@ -157,12 +157,12 @@ cat .git/refs/tags/v1</pre>
 heads
 tags
 $ ls .git/refs/heads
-master
+main
 $ ls .git/refs/tags
 v1
 v1-beta
 $ cat .git/refs/tags/v1
-b25116afe1b31cda48a5d66a1b4b3667b18dd1af
+e4e3645637546103e72f0deb9abdd22dd256601e
 </pre>
 <p>You should recognize the files in the tags subdirectory.  Each file corresponds to a tag you created with the <code>git tag</code> command earlier. Its content is just the hash of the commit tied to the tag.</p>
 <p>The heads directory is similar, but is used for branches rather than tags.  We only have one branch at the moment, so all you will see is main in this directory.</p>
@@ -171,7 +171,7 @@ b25116afe1b31cda48a5d66a1b4b3667b18dd1af
 <pre class="instructions">cat .git/HEAD</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ cat .git/HEAD
-7dff4ab94a885374f783ab701bfa0778e3d643d8
+ref: refs/heads/main
 </pre>
 <p>The <span class="caps">HEAD</span> file contains a reference to the current branch.  It should be a reference to main at this point.</p>
         <nav class="foot-navigation">

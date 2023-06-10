@@ -61,16 +61,16 @@
   <li id="lab_23_link"><a href="lab_23.html">Git Internals: Working directly with Git Objects</a></li>
   <li id="lab_24_link"><a href="lab_24.html">Creating a Branch</a></li>
   <li id="lab_25_link"><a href="lab_25.html">Navigating Branches</a></li>
-  <li id="lab_26_link"><a href="lab_26.html">Changes in Master</a></li>
+  <li id="lab_26_link"><a href="lab_26.html">Changes in Main</a></li>
   <li id="lab_27_link"><a href="lab_27.html">Viewing Diverging Branches</a></li>
   <li id="lab_28_link"><a href="lab_28.html">Merging</a></li>
   <li id="lab_29_link"><a href="lab_29.html">Creating a Conflict</a></li>
   <li id="lab_30_link"><a href="lab_30.html">Resolving Conflicts</a></li>
   <li id="lab_31_link"><a href="lab_31.html">Rebasing VS Merging</a></li>
   <li id="lab_32_link"><a href="lab_32.html">Resetting the Greet Branch</a></li>
-  <li id="lab_33_link"><a href="lab_33.html">Resetting the Master Branch</a></li>
+  <li id="lab_33_link"><a href="lab_33.html">Resetting the Main Branch</a></li>
   <li id="lab_34_link"><a href="lab_34.html">Rebasing</a></li>
-  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Master</a></li>
+  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Main</a></li>
   <li id="lab_36_link"><a href="lab_36.html">Multiple Repositories</a></li>
   <li id="lab_37_link"><a href="lab_37.html">Cloning Repositories</a></li>
   <li id="lab_38_link"><a href="lab_38.html">Review the Cloned Repository</a></li>
@@ -100,30 +100,36 @@
 <ul>
 	<li>Use the rebase command rather than the merge command.</li>
 </ul>
-<p>Ok, we are back in time before the first merge and we want to get the changes in master into our greet branch.</p>
-<p>This time we will use the rebase command instead of the merge command to bring in the changes from the master branch.</p>
+<p>Ok, we are back in time before the first merge and we want to get the changes in main into our greet branch.</p>
+<p>This time we will use the rebase command instead of the merge command to bring in the changes from the main branch.</p>
 <h3><b>Execute:</b></h3>
 <pre class="instructions">git checkout greet
-git rebase master
+git rebase main
 git hist</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ go greet
 Switched to branch 'greet'
 $
-$ git rebase master
+$ git rebase main
 First, rewinding head to replay your work on top of it...
 Applying: added Greeter class
 Applying: hello uses Greeter
 Applying: updated Rakefile
 $
 $ git hist
-* 72684ba 2023-06-10 | Added README (HEAD, master) [Jim Weirich]
-* 05f1840 2023-06-10 | Added a comment [Jim Weirich]
-* 11d8159 2023-06-10 | Added a default value [Jim Weirich]
-* fc07d4c 2023-06-10 | Using ARGV [Jim Weirich]
-* b25116a 2023-06-10 | First Commit (tag: v1-beta, tag: v1) [Jim Weirich]</pre>
+* 5f626c6 2023-06-10 | Updated Rakefile (HEAD -&gt; greet) [Jim Weirich]
+* 24d82d4 2023-06-10 | Hello uses Greeter [Jim Weirich]
+* 619f552 2023-06-10 | Added greeter class [Jim Weirich]
+* 976950b 2023-06-10 | Added README (main) [Jim Weirich]
+* cdceefa 2023-06-10 | Added a Rakefile. [Jim Weirich]
+* 22273f2 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
+* 186488e 2023-06-10 | Add an author/email comment [Jim Weirich]
+* e4e3645 2023-06-10 | Added a comment (tag: v1) [Jim Weirich]
+* a6b268e 2023-06-10 | Added a default value (tag: v1-beta) [Jim Weirich]
+* 174dfab 2023-06-10 | Using ARGV [Jim Weirich]
+* f7c41d3 2023-06-10 | First Commit [Jim Weirich]</pre>
 <h2>Merge VS Rebase</h2>
-<p>The final result of the rebase is very similar to the merge.  The greet branch now contains all of its changes, as well as all the changes from the master branch.  However, the commit tree is quite different.  The commit tree for the greet branch has been rewritten so that the master branch is a part of the commit history.  This leaves the chain of commits linear and much easier to read.</p>
+<p>The final result of the rebase is very similar to the merge.  The greet branch now contains all of its changes, as well as all the changes from the main branch.  However, the commit tree is quite different.  The commit tree for the greet branch has been rewritten so that the main branch is a part of the commit history.  This leaves the chain of commits linear and much easier to read.</p>
 <h2>When to Rebase, When to Merge?</h2>
 <p>Don&#8217;t use rebase &#8230;</p>
 <ol>

@@ -61,16 +61,16 @@
   <li id="lab_23_link"><a href="lab_23.html">Git Internals: Working directly with Git Objects</a></li>
   <li id="lab_24_link"><a href="lab_24.html">Creating a Branch</a></li>
   <li id="lab_25_link"><a href="lab_25.html">Navigating Branches</a></li>
-  <li id="lab_26_link"><a href="lab_26.html">Changes in Master</a></li>
+  <li id="lab_26_link"><a href="lab_26.html">Changes in Main</a></li>
   <li id="lab_27_link"><a href="lab_27.html">Viewing Diverging Branches</a></li>
   <li id="lab_28_link"><a href="lab_28.html">Merging</a></li>
   <li id="lab_29_link"><a href="lab_29.html">Creating a Conflict</a></li>
   <li id="lab_30_link"><a href="lab_30.html">Resolving Conflicts</a></li>
   <li id="lab_31_link"><a href="lab_31.html">Rebasing VS Merging</a></li>
   <li id="lab_32_link"><a href="lab_32.html">Resetting the Greet Branch</a></li>
-  <li id="lab_33_link"><a href="lab_33.html">Resetting the Master Branch</a></li>
+  <li id="lab_33_link"><a href="lab_33.html">Resetting the Main Branch</a></li>
   <li id="lab_34_link"><a href="lab_34.html">Rebasing</a></li>
-  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Master</a></li>
+  <li id="lab_35_link"><a href="lab_35.html">Merging Back to Main</a></li>
   <li id="lab_36_link"><a href="lab_36.html">Multiple Repositories</a></li>
   <li id="lab_37_link"><a href="lab_37.html">Cloning Repositories</a></li>
   <li id="lab_38_link"><a href="lab_38.html">Review the Cloned Repository</a></li>
@@ -101,34 +101,38 @@
 	<li>Learn how to merge two diverging branches to bring the changes back into a single branch.</li>
 </ul>
 <h2>Merge the branches</h2>
-<p>Merging brings the changes in two branches together.  Let&#8217;s go back to the greet branch and merge master onto greet.</p>
+<p>Merging brings the changes in two branches together.  Let&#8217;s go back to the greet branch and merge main onto greet.</p>
 <h3><b>Execute:</b></h3>
 <pre class="instructions">git checkout greet
-git merge master
+git merge main
 git hist --all</pre>
 <h3><b>Output:</b></h3>
 <pre class="sample">$ git checkout greet
 Switched to branch 'greet'
-$ git merge master
-CONFLICT (modify/delete): hello.rb deleted in HEAD and modified in master. Version master of hello.rb left in tree.
-Automatic merge failed; fix conflicts and then commit the result.
+$ git merge main
+Merge made by the 'recursive' strategy.
+ README | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README
 $ git hist --all
-* 72684ba 2023-06-10 | Added README (master) [Jim Weirich]
-* 05f1840 2023-06-10 | Added a comment [Jim Weirich]
-* 11d8159 2023-06-10 | Added a default value [Jim Weirich]
-* fc07d4c 2023-06-10 | Using ARGV [Jim Weirich]
-| * 9e0c234 2023-06-10 | Updated Rakefile (HEAD -&gt; greet) [Jim Weirich]
-| * 1c6e7fc 2023-06-10 | Hello uses Greeter [Jim Weirich]
-| * c1016ec 2023-06-10 | Added greeter class [Jim Weirich]
-| * 7dff4ab 2023-06-10 | Added a Rakefile. [Jim Weirich]
-| * 891864a 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
-| * 4c3b5c9 2023-06-10 | Add an author/email comment [Jim Weirich]
+*   82a2988 2023-06-10 | Merge branch 'main' into greet (HEAD -&gt; greet) [Jim Weirich]
+|\  
+| * 976950b 2023-06-10 | Added README (main) [Jim Weirich]
+* | c1a7120 2023-06-10 | Updated Rakefile [Jim Weirich]
+* | 959a7cb 2023-06-10 | Hello uses Greeter [Jim Weirich]
+* | cab1837 2023-06-10 | Added greeter class [Jim Weirich]
 |/  
-* b25116a 2023-06-10 | First Commit (tag: v1-beta, tag: v1) [Jim Weirich]</pre>
-<p>By merging master into your greet branch periodically, you can pick up any changes to master and keep your changes in greet compatible with changes in the mainline.</p>
+* cdceefa 2023-06-10 | Added a Rakefile. [Jim Weirich]
+* 22273f2 2023-06-10 | Moved hello.rb to lib [Jim Weirich]
+* 186488e 2023-06-10 | Add an author/email comment [Jim Weirich]
+* e4e3645 2023-06-10 | Added a comment (tag: v1) [Jim Weirich]
+* a6b268e 2023-06-10 | Added a default value (tag: v1-beta) [Jim Weirich]
+* 174dfab 2023-06-10 | Using ARGV [Jim Weirich]
+* f7c41d3 2023-06-10 | First Commit [Jim Weirich]</pre>
+<p>By merging main into your greet branch periodically, you can pick up any changes to main and keep your changes in greet compatible with changes in the mainline.</p>
 <p>However, it does produce ugly commit graphs. Later we will look at the option of rebasing rather than merging.</p>
 <h2>Up Next</h2>
-<p>But first, what if the changes in master conflict with the changes in greet?</p>
+<p>But first, what if the changes in main conflict with the changes in greet?</p>
         <nav class="foot-navigation">
       <a href="lab_27.html">
       <svg version="1.1" width="36" height="36" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M27.66,15.61,18,6,8.34,15.61A1,1,0,1,0,9.75,17L17,9.81V28.94a1,1,0,1,0,2,0V9.81L26.25,17a1,1,0,0,0,1.41-1.42Z"></path></svg>

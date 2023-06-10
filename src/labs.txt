@@ -35,7 +35,7 @@ h2. Setup Ruby
 p. For this tutorial you need a working Ruby interpreter. If you haven´t one
 installed yet, it is time to set it up now:
 
-"https://www.ruby-lang.org/en/installation/":https://www.ruby-lang.org/en/installation/
+"https://www.ruby-lang.org/en/downloads/":https://www.ruby-lang.org/en/downloads/
 
 ----------------------------------------------------------------------
 h1. More Setup
@@ -46,7 +46,7 @@ h2. Goals
 
 h2. Get the Tutorial package
 
-* Download from: "http://gitimmersion.com/git_tutorial.zip":http://gitimmersion.com/git_tutorial.zip
+* Download from: "https://gitimmersion.com/git_tutorial.zip":https://gitimmersion.com/git_tutorial.zip
 
 h2. Unzip the tutorial
 
@@ -1639,7 +1639,7 @@ Output:
 =cat
 EOF
 
-p. You are now on the master branch.  You can tell because the
+p. You are now on the main branch.  You can tell because the
 hello.rb file doesn't use the @Greeter@ class.
 
 h2. Switch Back to the Greet Branch.
@@ -1659,19 +1659,19 @@ p. The contents of the @lib/hello.rb@ confirms we are back on the
 *greet* branch.
 
 ----------------------------------------------------------------------
-h1. Changes in Master
+h1. Changes in Main
 
 h2. Goals
 
 * Learning how to deal with multiple branches with different (and possibly conflicting) changes.
 
 p. While you were changing the greet branch, someone else decided to
-update the master branch.  They added a README.
+update the main branch.  They added a README.
 
-h2. Switch to the master branch.
+h2. Switch to the main branch.
 
 Execute:
-git checkout master
+git checkout main
 
 h2. Create the README.
 
@@ -1679,7 +1679,7 @@ File: README
 This is the Hello World example from the git tutorial.
 EOF
 
-h2. Commit the README to master.
+h2. Commit the README to main.
 
 Execute:
 git add README
@@ -1708,7 +1708,7 @@ EOF
 p. Here is our first chance to see the @--graph@ option on @git hist@ in
 action. Adding the @--graph@ option to @git log@ causes it to draw the
 commit tree using simple ASCII characters.  We can see both branches
-(greet and master), and that the master branch is the current HEAD.
+(greet and main), and that the main branch is the current HEAD.
 The common ancestor to both branches is the "Added a Rakefile" branch.
 
 p. The @--all@ flag makes sure that we see all the branches.  The
@@ -1724,12 +1724,12 @@ h2. Goals
 h2. Merge the branches
 
 p. Merging brings the changes in two branches together.  Let's go back
-to the greet branch and merge master onto greet.
+to the greet branch and merge main onto greet.
 
 Execute:
 git checkout greet
 =checkout
-git merge master
+git merge main
 =merge
 git hist --all
 =hist
@@ -1740,8 +1740,8 @@ Output:
 =hist
 EOF
 
-p. By merging master into your greet branch periodically, you can pick
-up any changes to master and keep your changes in greet compatible
+p. By merging main into your greet branch periodically, you can pick
+up any changes to main and keep your changes in greet compatible
 with changes in the mainline.
 
 p. However, it does produce ugly commit graphs. Later we will look at
@@ -1749,7 +1749,7 @@ the option of rebasing rather than merging.
 
 h2. Up Next
 
-p. But first, what if the changes in master conflict with the changes
+p. But first, what if the changes in main conflict with the changes
 in greet?
 
 ----------------------------------------------------------------------
@@ -1757,14 +1757,14 @@ h1. Creating a Conflict
 
 h2. Goals
 
-* Create a conflicting change in the master branch.
+* Create a conflicting change in the main branch.
 
-h2. Switch back to master and create a conflict
+h2. Switch back to main and create a conflict
 
-p. Switch back to the master branch and make this change:
+p. Switch back to the main branch and make this change:
 
 Execute:
-git checkout master
+git checkout main
 
 File: lib/hello.rb
 puts "What's your name"
@@ -1787,13 +1787,13 @@ Output:
 =log
 EOF
 
-p. Master at commit "Added README" has been merged to the greet
-branch, but there is now an additional commit on master that has not
+p. main at commit "Added README" has been merged to the greet
+branch, but there is now an additional commit on main that has not
 been merged back to greet.
 
 h2. Up Next
 
-p. The latest change in master conflicts with some existing changes in
+p. The latest change in main conflicts with some existing changes in
 greet.  Next we will resolve those changes.
 
 ----------------------------------------------------------------------
@@ -1803,18 +1803,18 @@ h2. Goals
 
 * Learn how to handle conflicts during a merge
 
-h2. Merge master to greet
+h2. Merge main to greet
 
-p. Now go back to the greet branch and try to merge the new master.
+p. Now go back to the greet branch and try to merge the new main.
 
 Execute:
 git checkout greet
-!git merge master
+!git merge main
 
 Output:
 $ git checkout greet
 Switched to branch 'greet'
-$ git merge master
+$ git merge main
 Auto-merging lib/hello.rb
 CONFLICT (content): Merge conflict in lib/hello.rb
 Automatic merge failed; fix conflicts and then commit the result.
@@ -1838,11 +1838,11 @@ puts "What's your name"
 my_name = gets.strip
 
 puts "Hello, #{my_name}!"
->>>>>>> master
+>>>>>>> main
 EOF
 
 p. The first section is the version on the head of the current branch
-(greet).  The second section is the version on the master branch.
+(greet).  The second section is the version on the main branch.
 
 h2. Fix the Conflict
 
@@ -1864,7 +1864,7 @@ h2. Commit the Conflict Resolution
 Execute:
 git add lib/hello.rb
 =add
-git commit -m "Merged master fixed conflict."
+git commit -m "Merged main fixed conflict."
 =commit
 
 Output:
@@ -1906,12 +1906,12 @@ h2. Goals
 h2. Reset the greet branch
 
 p. Let's go back in time on the greet branch to the point _before_ we
-merged master onto it.  We can *reset* a branch to any commit we want.
+merged main onto it.  We can *reset* a branch to any commit we want.
 Essentially this is modifying the branch pointer to point to anywhere
 in the commit tree.
 
 p. In this case we want to back greet up to the point prior to the
-merge with master.  We need to find the last commit before the merge.
+merge with main.  We need to find the last commit before the merge.
 
 Execute:
 git checkout greet
@@ -1951,22 +1951,22 @@ Output:
 EOF
 
 ----------------------------------------------------------------------
-h1. Resetting the Master Branch
+h1. Resetting the Main Branch
 
 h2. Goals
 
-* Reset the master branch to the point before the conflicting commit.
+* Reset the main branch to the point before the conflicting commit.
 
-h2. Reset the master branch
+h2. Reset the main branch
 
-p. When we added the interactive mode to the master branch, we made a
+p. When we added the interactive mode to the main branch, we made a
 change that conflicted with changes in the greet branch. Let's rewind
-the master branch to a point before the conflicting change.  This
+the main branch to a point before the conflicting change.  This
 allows us to demonstrate the rebase command without worrying about
 conflicts.
 
 Execute:
-git checkout master
+git checkout main
 git hist
 =log
 
@@ -1975,7 +1975,7 @@ Output:
 EOF
 
 p. The 'Added README' commit is the one directly before the
-conflicting interactive mode.  We will reset the master branch to
+conflicting interactive mode.  We will reset the main branch to
 'Added README' commit.
 
 Set: hash=hash_for("Added README")
@@ -1999,14 +1999,14 @@ h2. Goals
 * Use the rebase command rather than the merge command.
 
 p. Ok, we are back in time before the first merge and we want to get
-the changes in master into our greet branch.
+the changes in main into our greet branch.
 
 p. This time we will use the rebase command instead of the merge
-command to bring in the changes from the master branch.
+command to bring in the changes from the main branch.
 
 Execute:
 git checkout greet
-git rebase master
+git rebase main
 git hist
 =log
 
@@ -2014,7 +2014,7 @@ Output:
 $ go greet
 Switched to branch 'greet'
 $
-$ git rebase master
+$ git rebase main
 First, rewinding head to replay your work on top of it...
 Applying: added Greeter class
 Applying: hello uses Greeter
@@ -2027,9 +2027,9 @@ h2. Merge VS Rebase
 
 p. The final result of the rebase is very similar to the merge.  The
 greet branch now contains all of its changes, as well as all the
-changes from the master branch.  However, the commit tree is quite
+changes from the main branch.  However, the commit tree is quite
 different.  The commit tree for the greet branch has been rewritten so
-that the master branch is a part of the commit history.  This leaves
+that the main branch is a part of the commit history.  This leaves
 the chain of commits linear and much easier to read.
 
 h2. When to Rebase, When to Merge?
@@ -2043,27 +2043,27 @@ p. Given the above guidelines, I tend to use rebase for short-lived,
 local branches and merge for branches in the public repository.
 
 ----------------------------------------------------------------------
-h1. Merging Back to Master
+h1. Merging Back to Main
 
 h2. Goals
 
-* We've kept our greet branch up to date with master (via rebase), now let's merge the greet changes back into the master branch.
+* We've kept our greet branch up to date with main (via rebase), now let's merge the greet changes back into the main branch.
 
-h2. Merge greet into master
+h2. Merge greet into main
 
 Execute:
-git checkout master
+git checkout main
 git merge greet
 =merge
 
 Output:
-$ git checkout master
-Switched to branch 'master'
+$ git checkout main
+Switched to branch 'main'
 $
 =merge
 EOF
 
-p. Because the head of master is a direct ancestor of the head of the
+p. Because the head of main is a direct ancestor of the head of the
 greet branch, git is able to do a fast-forward merge.  When
 fast-forwarding, the branch pointer is simply moved forward to point
 to the same commit as the greeter branch.
@@ -2080,7 +2080,7 @@ Output:
 =log
 EOF
 
-p. The greet and master branches are now identical.
+p. The greet and main branches are now identical.
 
 ----------------------------------------------------------------------
 h1. Multiple Repositories
@@ -2204,9 +2204,9 @@ names of the branches.
 
 h2. Remote branches
 
-p. You should see a *master* branch (along with *HEAD*) in the history
+p. You should see a *main* branch (along with *HEAD*) in the history
 list.  But you will also have a number of strangely named branches
-(*origin/master*, *origin/greet* and *origin/HEAD*).  We'll talk about
+(*origin/main*, *origin/greet* and *origin/HEAD*).  We'll talk about
 them in a bit.
 
 ----------------------------------------------------------------------
@@ -2260,7 +2260,7 @@ Output:
 =branch
 EOF
 
-p. That's it, only the master branch is listed.  Where is the greet
+p. That's it, only the main branch is listed.  Where is the greet
 branch?  The *git* *branch* command only lists the local branches by
 default.
 
@@ -2343,11 +2343,11 @@ repository, but they are not integrated into the cloned
 repository's local branches.
 
 p. Find the "Changed README in original repo" commit in the history
-above.  Notice that the commit includes "origin/master" and
+above.  Notice that the commit includes "origin/main" and
 "origin/HEAD".
 
 p. Now look at the "Updated Rakefile" commit.  You will see that
-the local master branch points to this commit, not to the new commit
+the local main branch points to this commit, not to the new commit
 that we just fetched.
 
 p. The upshot of this is that the "git fetch" command will fetch new
@@ -2375,10 +2375,10 @@ h2. Goals
 
 * Learn to get the pulled changes into the current branch and working directory.
 
-h2. Merge the fetched changes into local master
+h2. Merge the fetched changes into local main
 
 Execute:
-git merge origin/master
+git merge origin/main
 =merge
 
 Output:
@@ -2424,7 +2424,7 @@ pre(instructions). git pull
 is indeed equivalent to the two steps:
 
 pre(instructions). git fetch
-git merge origin/master
+git merge origin/main
 
 ----------------------------------------------------------------------
 h1. Adding a Tracking Branch
@@ -2523,14 +2523,14 @@ This is the Hello World example from the git tutorial.
 EOF
 
 Execute:
-git checkout master
+git checkout main
 git add README
 git commit -m "Added shared comment to readme"
 
 p. Now push the change to the shared repo.
 
 Execute:
-git push shared master
+git push shared main
 =push
 
 p. _shared_ is the name of the repository receiving the changes we are
@@ -2540,7 +2540,7 @@ Output:
 =push
 EOF
 
-p(note). *NOTE:* We had to explicitly name the branch master that was
+p(note). *NOTE:* We had to explicitly name the branch main that was
 receiving the push.  It is possible to set it up automatically, but I
 _never_ remember the commands to do that.  Check out the "Git Remote
 Branch" gem for easy management of remote branches.

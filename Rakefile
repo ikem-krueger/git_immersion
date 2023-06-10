@@ -26,14 +26,14 @@ end
 
 desc "Publish the Git Immersion web site."
 task :publish => [:not_dirty, :build, :labs] do
-  sh 'git checkout master'
+  sh 'git checkout main'
   head = `git log --pretty="%h" -n1`.strip
   sh 'git checkout gh-pages'
   cp FileList['git_tutorial/html/*'], '.'
   sh 'git add .'
   sh "git commit -m 'Updated docs to #{head}'"
   sh 'git push'
-  sh 'git checkout master'
+  sh 'git checkout main'
 end
 
 directory "dist"

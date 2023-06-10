@@ -30,9 +30,9 @@ execute:
 git config --global core.autocrlf true
 git config --global core.safecrlf true
 
-h2. Setup Ruby 
+h2. Setup Ruby
 
-p. For this tutorial you need a working Ruby interpreter. If you haven´t one 
+p. For this tutorial you need a working Ruby interpreter. If you haven´t one
 installed yet, it is time to set it up now:
 
 "https://www.ruby-lang.org/en/installation/":https://www.ruby-lang.org/en/installation/
@@ -286,7 +286,7 @@ Output:
 |
 # Please enter the commit message for your changes. Lines starting
 # with '#' will be ignored, and an empty message aborts the commit.
-# On branch master
+# On branch main
 # Changes to be committed:
 #   (use "git reset HEAD <file>..." to unstage)
 #
@@ -300,7 +300,7 @@ and exit the editor.  You should see ...
 Output:
 git commit
 Waiting for Emacs...
-[master 569aa96] Using ARGV
+[main 569aa96] Using ARGV
  1 files changed, 1 insertions(+), 1 deletions(-)
 EOF
 
@@ -681,10 +681,10 @@ branch.  In any case, don't worry about that for now.
 
 p. Notice the contents of the hello.rb file are the original contents.
 
-h2. Return the latest version in the master branch
+h2. Return the latest version in the main branch
 
 Execute:
-git checkout master
+git checkout main
 =checkout2
 cat hello.rb
 =cat2
@@ -696,7 +696,7 @@ Output:
 =cat2
 EOF
 
-p. 'master' is the name of the default branch.  By checking out a branch
+p. 'main' is the name of the default branch.  By checking out a branch
 by name, you go to the latest version of that branch.
 
 ----------------------------------------------------------------------
@@ -776,7 +776,7 @@ h2. Viewing Tags in the Logs
 p. You can also check for tags in the log.
 
 Execute:
-git hist master --all
+git hist main --all
 =hist
 
 Output:
@@ -784,7 +784,7 @@ Output:
 EOF
 
 p. You can see both tags (@v1@ and @v1-beta@) listed in the log
-output, along with the branch name (@master@).  Also @HEAD@ shows you
+output, along with the branch name (@main@).  Also @HEAD@ shows you
 the currently checked out commit (which is @v1-beta@ at the moment).
 
 ----------------------------------------------------------------------
@@ -794,12 +794,12 @@ h2. Goals
 
 * Learn how to revert changes in the working directory
 
-h2. Checkout Master
+h2. Checkout main
 
-p. Make sure you are on the latest commit in master before proceeding.
+p. Make sure you are on the latest commit in main before proceeding.
 
 Execute:
-git checkout master
+git checkout main
 
 h2. Change hello.rb
 
@@ -1079,7 +1079,7 @@ Output:
 =hist2
 EOF
 
-p. Our master branch now points to the v1 commit and the Oops commit
+p. Our main branch now points to the v1 commit and the Oops commit
 and the Revert Oops commit are no longer in the branch.  The @--hard@
 parameter indicates that the working directory should be updated to be
 consistent with the new branch head.
@@ -1101,7 +1101,7 @@ EOF
 
 p. Here we see that the bad commits haven't disappeared.  They are
 still in the repository.  It's just that they are no longer listed in
-the master branch.  If we hadn't tagged them, they would still be in
+the main branch.  If we hadn't tagged them, they would still be in
 the repository, but there would be no way to reference them other than
 using their hash names.  Commits that are unreferenced remain in the
 repository until the system runs the garbage collection software.
@@ -1279,10 +1279,10 @@ h2. Now add a Rakefile
 
 p. This lab assumes you have installed *rake*. Please
 do that before continuing. Check for your specific Operating System.
-Otherwise execute: 
+Otherwise execute:
 
 Execute:
-gem install rake 
+gem install rake
 
 p. Let's add a Rakefile to our repository.  The following one will do
 nicely.
@@ -1406,7 +1406,7 @@ Its content is just the hash of the commit tied to the tag.
 
 p. The heads directory is similar, but is used for branches rather
 than tags.  We only have one branch at the moment, so all you will see
-is master in this directory.
+is main in this directory.
 
 h2. The HEAD File
 
@@ -1419,7 +1419,7 @@ Output:
 EOF
 
 p. The HEAD file contains a reference to the current branch.  It
-should be a reference to master at this point.
+should be a reference to main at this point.
 
 ----------------------------------------------------------------------
 h1. Git Internals: Working directly with Git Objects
@@ -1468,7 +1468,7 @@ the aliases lab, then you can type @git type@ and @git dump@ rather
 than the longer cat-file commands (which I never remember).
 
 p. This is the dump of the commit object that is at the head of the
-master branch.  It looks a lot like the commit object from the
+main branch.  It looks a lot like the commit object from the
 presentation earlier.
 
 h2. Finding the Tree
@@ -1533,7 +1533,7 @@ h2. Goals
 
 p. It's time to do a major rewrite of the hello world functionality.
 Since this might take awhile, you'll want to put these changes into a
-separate branch to isolate them from changes in master.
+separate branch to isolate them from changes in main.
 
 h2. Create a Branch
 
@@ -1624,12 +1624,12 @@ Output:
 =log
 EOF
 
-h2. Switch to the Master Branch
+h2. Switch to the Main Branch
 
 p. Just use the @git checkout@ command to switch between branches.
 
 Execute:
-git checkout master
+git checkout main
 =checkout
 cat lib/hello.rb
 =cat
@@ -2565,8 +2565,8 @@ p. Continue with...
 
 Execute:
 git remote add shared ../hello.git
-git branch --track shared master
-git pull shared master
+git branch --track shared main
+git pull shared main
 cat README
 
 ----------------------------------------------------------------------

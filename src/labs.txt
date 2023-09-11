@@ -1876,7 +1876,7 @@ h2. Advanced Merging
 
 p. git doesn't provide any graphical merge tools, but it will gladly
 work with any third party merge tool you wish to use.  See
-"http://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#External-Merge-and-Diff-Tools":http://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#External-Merge-and-Diff-Tools
+"https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_external_merge_tools":https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_external_merge_tools
 for a description of using the Perforce merge tool with git.
 
 ----------------------------------------------------------------------

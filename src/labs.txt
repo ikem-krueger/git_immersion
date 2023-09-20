@@ -2011,7 +2011,7 @@ git hist
 =log
 
 Output:
-$ go greet
+$ git checkout greet
 Switched to branch 'greet'
 $
 $ git rebase main

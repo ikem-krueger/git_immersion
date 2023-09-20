@@ -2552,7 +2552,7 @@ h2. Goals
 
 * Learn how to pull changes from a shared repository.
 
-p. Quick hop over to the clone repository and let's pull down the
+p. Quick hop over to the cloned repository and let's pull down the
 changes just pushed to the shared repo.
 
 Execute:
